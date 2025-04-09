@@ -2,15 +2,23 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            Clicked();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void Clicked()
     {
-        
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit hit = new RaycastHit();
+
+        if (Physics.Raycast (ray, out hit))
+        {
+            Events.OnClickInvoke(hit.point);
+        }
     }
 }
