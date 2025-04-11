@@ -1,11 +1,13 @@
 using System;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Minion : MonoBehaviour
 {
     private Vector3 _targetPosition;
     [SerializeField] private float speed= 10;
-    private Rigidbody _rigidbody;
+    private Rigidbody _rigidbody;  
+    private NavMeshAgent _agent;
     private void OnEnable()
     {
         Events.OnClick += GoToClickedPosition;
@@ -16,15 +18,8 @@ public class Minion : MonoBehaviour
     {
         _targetPosition = transform.position;
         _rigidbody = GetComponent<Rigidbody>();
-    }
-
-    private void Update()
-    {
-        if (Vector3.Distance(transform.position, _targetPosition) > 1f)
-        {
-            _rigidbody.AddForce(Vector3.Normalize( _targetPosition- transform.position) * (speed * Time.deltaTime), ForceMode.VelocityChange);
-            
-        }
+        _agent = GetComponent<NavMeshAgent>();
+        
     }
 
     private void OnDisable()
@@ -35,5 +30,6 @@ public class Minion : MonoBehaviour
     private void GoToClickedPosition(Vector3 position)
     {
         _targetPosition = position;
+        _agent.SetDestination(_targetPosition);
     }
 }

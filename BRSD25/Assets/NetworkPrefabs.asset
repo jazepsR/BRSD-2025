@@ -13,10 +13,19 @@ MonoBehaviour:
   m_Name: NetworkPrefabs
   m_EditorClassIdentifier: 
   autoGenerate: 1
-  networkOnly: 1
+  networkOnly: 0
   poolByDefault: 0
   folder: {fileID: 102900000, guid: 1235e1e19731d9f4ea31f8bf5bc4b143, type: 3}
   prefabs:
   - prefab: {fileID: 1759134041543432675, guid: 0b8b6690f0f099744bd797c07fe3c93f, type: 3}
+    pooled: 0
+    warmupCount: 5
+  - prefab: {fileID: 1430164150084268653, guid: 6aefd11f0fca9414483607f588579177, type: 3}
+    pooled: 0
+    warmupCount: 5
+  - prefab: {fileID: 2831075870860256429, guid: 9d772372755b81141834e4f471d9398d, type: 3}
+    pooled: 0
+    warmupCount: 5
+  - prefab: {fileID: 7401640673658077481, guid: 210e70d4af80317499e303aee65c8825, type: 3}
     pooled: 0
     warmupCount: 5
